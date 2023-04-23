@@ -85,7 +85,7 @@ public class LIBRARIAN {
 				String username = txtUsername.getText();
 				String password = txtPassword.getText();
 				
-				if (username.contains("Librarian_01")&& password.contains("	")) {
+				if (username.contains("Librarian_01")&& password.contains("LibOne")) {
 					txtUsername.setText(null);
 					txtPassword.setText(null);
 					JOptionPane.showMessageDialog(null,"Succesfully login");
