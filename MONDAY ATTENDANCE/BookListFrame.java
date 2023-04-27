@@ -4,14 +4,19 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
-import java.awt.GridLayout;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BookListFrame {
 
-	JFrame Books;
-
+	JFrame Booksframe;
+	private JTextField txtBookNum;
+	private int[] bookList = {1, 4, 3};
 	/**
 	 * Launch the application.
 	 */
@@ -20,7 +25,7 @@ public class BookListFrame {
 			public void run() {
 				try {
 					BookListFrame window = new BookListFrame();
-					window.Books.setVisible(true);
+					window.Booksframe.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -39,82 +44,126 @@ public class BookListFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		Books = new JFrame();
-		Books.setTitle("BOOKS");
-		Books.setBounds(100, 100, 857, 483);
-		Books.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Books.getContentPane().setLayout(new GridLayout(0, 3, 0, 0));
+		Booksframe = new JFrame();
+		Booksframe.setTitle("BORROW BOOKS");
+		Booksframe.setBounds(100, 100, 857, 483);
+		Booksframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Booksframe.getContentPane().setLayout(null);
 		
 		JLabel AvailBooks = new JLabel("AVAILABLE BOOKS");
-		AvailBooks.setFont(new Font("Agency FB", Font.BOLD, 31));
+		AvailBooks.setFont(new Font("Tahoma", Font.BOLD, 30));
 		AvailBooks.setHorizontalAlignment(SwingConstants.CENTER);
-		Books.getContentPane().add(AvailBooks);
+		AvailBooks.setBounds(228, 10, 369, 76);
+		Booksframe.getContentPane().add(AvailBooks);
 		
-		JLabel label = new JLabel("");
-		Books.getContentPane().add(label);
+		JLabel Book1 = new JLabel("0: The Hunger Games");
+		Book1.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		Book1.setHorizontalAlignment(SwingConstants.CENTER);
+		Book1.setBounds(46, 168, 232, 56);
+		Booksframe.getContentPane().add(Book1);
 		
-		JLabel label_1 = new JLabel("");
-		Books.getContentPane().add(label_1);
+		JLabel Book2 = new JLabel("1: The Fault in Our Stars");
+		Book2.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		Book2.setHorizontalAlignment(SwingConstants.CENTER);
+		Book2.setBounds(46, 223, 232, 56);
+		Booksframe.getContentPane().add(Book2);
+		
+		JLabel Book3 = new JLabel("2: The Shining");
+		Book3.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		Book3.setHorizontalAlignment(SwingConstants.CENTER);
+		Book3.setBounds(46, 289, 232, 56);
+		Booksframe.getContentPane().add(Book3);
+		
+		JLabel Author1 = new JLabel("Suzanne Collins");
+		Author1.setHorizontalAlignment(SwingConstants.CENTER);
+		Author1.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		Author1.setBounds(297, 168, 232, 56);
+		Booksframe.getContentPane().add(Author1);
+		
+		JLabel Author2 = new JLabel("John Green");
+		Author2.setHorizontalAlignment(SwingConstants.CENTER);
+		Author2.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		Author2.setBounds(297, 223, 232, 56);
+		Booksframe.getContentPane().add(Author2);
+		
+		JLabel Author3 = new JLabel("Stephen King");
+		Author3.setHorizontalAlignment(SwingConstants.CENTER);
+		Author3.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		Author3.setBounds(297, 289, 232, 56);
+		Booksframe.getContentPane().add(Author3);
+		
+		JLabel Author1_1 = new JLabel("1");
+		Author1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		Author1_1.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		Author1_1.setBounds(558, 168, 232, 56);
+		Booksframe.getContentPane().add(Author1_1);
+		
+		JLabel Author1_2 = new JLabel("4");
+		Author1_2.setHorizontalAlignment(SwingConstants.CENTER);
+		Author1_2.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		Author1_2.setBounds(558, 223, 232, 56);
+		Booksframe.getContentPane().add(Author1_2);
+		
+		JLabel Author1_3 = new JLabel("3");
+		Author1_3.setHorizontalAlignment(SwingConstants.CENTER);
+		Author1_3.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		Author1_3.setBounds(558, 289, 232, 56);
+		Booksframe.getContentPane().add(Author1_3);
 		
 		JLabel lblBookTitles = new JLabel("BOOK TITLES :");
 		lblBookTitles.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBookTitles.setFont(new Font("Agency FB", Font.BOLD, 15));
-		Books.getContentPane().add(lblBookTitles);
+		lblBookTitles.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		lblBookTitles.setBounds(46, 102, 232, 56);
+		Booksframe.getContentPane().add(lblBookTitles);
 		
 		JLabel lblAuthors = new JLabel("AUTHORS :");
 		lblAuthors.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAuthors.setFont(new Font("Agency FB", Font.BOLD, 15));
-		Books.getContentPane().add(lblAuthors);
+		lblAuthors.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		lblAuthors.setBounds(288, 102, 232, 56);
+		Booksframe.getContentPane().add(lblAuthors);
 		
-		JLabel lblNumOfCompies = new JLabel("NUM. OF COPIES :");
-		lblNumOfCompies.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNumOfCompies.setFont(new Font("Agency FB", Font.BOLD, 15));
-		Books.getContentPane().add(lblNumOfCompies);
+		JLabel lblNumOfCopies = new JLabel("NUM. OF COPIES :");
+		lblNumOfCopies.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNumOfCopies.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		lblNumOfCopies.setBounds(539, 102, 232, 56);
+		Booksframe.getContentPane().add(lblNumOfCopies);
 		
-		JLabel Noli = new JLabel("Noli Me Tangere");
-		Noli.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		Noli.setHorizontalAlignment(SwingConstants.CENTER);
-		Books.getContentPane().add(Noli);
+		JLabel lblNewLabel = new JLabel("BOOK NUMBER:");
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		lblNewLabel.setBounds(93, 355, 142, 56);
+		Booksframe.getContentPane().add(lblNewLabel);
 		
-		JLabel JR = new JLabel("JOSE RIZAL");
-		JR.setHorizontalAlignment(SwingConstants.CENTER);
-		JR.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		Books.getContentPane().add(JR);
+		txtBookNum = new JTextField();
+		txtBookNum.setBounds(257, 367, 118, 36);
+		Booksframe.getContentPane().add(txtBookNum);
+		txtBookNum.setColumns(10);
 		
-		JLabel Copy = new JLabel("4");
-		Copy.setHorizontalAlignment(SwingConstants.CENTER);
-		Copy.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		Books.getContentPane().add(Copy);
-		
-		JLabel ElFili = new JLabel("El Filibusterismo");
-		ElFili.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		ElFili.setHorizontalAlignment(SwingConstants.CENTER);
-		Books.getContentPane().add(ElFili);
-		
-		JLabel Author2 = new JLabel("JOSE RIZAL");
-		Author2.setHorizontalAlignment(SwingConstants.CENTER);
-		Author2.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		Books.getContentPane().add(Author2);
-		
-		JLabel Copies = new JLabel("2");
-		Copies.setHorizontalAlignment(SwingConstants.CENTER);
-		Copies.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		Books.getContentPane().add(Copies);
-		
-		JLabel MIA = new JLabel("Mi Ultimo Adios");
-		MIA.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		MIA.setHorizontalAlignment(SwingConstants.CENTER);
-		Books.getContentPane().add(MIA);
-		
-		JLabel Jr1 = new JLabel("JOSE RIZAL");
-		Jr1.setHorizontalAlignment(SwingConstants.CENTER);
-		Jr1.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		Books.getContentPane().add(Jr1);
-		
-		JLabel NOC = new JLabel("5");
-		NOC.setHorizontalAlignment(SwingConstants.CENTER);
-		NOC.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		Books.getContentPane().add(NOC);
+		JButton btnBorrow = new JButton("BORROW");
+		btnBorrow.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (e.getSource() == btnBorrow) {
+		            int bookNum = Integer.parseInt(txtBookNum.getText());
+		            if (bookNum >= 0 && bookNum < bookList.length && bookList[bookNum] > 0) {
+		                bookList[bookNum]--;
+		                
+		                JOptionPane.showMessageDialog(Booksframe, "Book borrowed successfully!");
+		            } 
+		            else if
+		            
+		            	(bookNum >= 3) {
+			             
+			             JOptionPane.showMessageDialog(Booksframe, "INDEX DOES NOT EXIST, try again");
+		            	
+		            }
+		      
+		            else {
+		                JOptionPane.showMessageDialog(Booksframe, "Book not available.");
+		            }
+		        }
+			}
+		});
+		btnBorrow.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		btnBorrow.setBounds(399, 373, 109, 21);
+		Booksframe.getContentPane().add(btnBorrow);
 	}
-
 }
